@@ -1,22 +1,17 @@
-import { useEffect, useState } from "react";
-import { getWeatherData } from "./adapters/WeatherService";
+import { useApi } from "../src/hooks/useApi";
 
 const WeatherApp = () => {
-  const [weatherData, setWeatherData] = useState(null);
+  const [isQuerying, weatherData] = useApi();
 
-  const handleWeatherData = async () => {
-    const data = await getWeatherData();
-    setWeatherData(data);
-  };
-
-  useEffect(() => {
-    handleWeatherData();
-  }, []);
+  if (isQuerying) {
+    return <span>Loading...</span>;
+  }
 
   return (
     <div>
-      <h1>Weather App!</h1>
-      <span>{weatherData?.current.temp}</span>
+      <h1>App!</h1>
+      <h2>{weatherData?.name}</h2>
+      <span>{weatherData?.main.temp}</span>
     </div>
   );
 };
