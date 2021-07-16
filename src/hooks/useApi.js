@@ -25,15 +25,19 @@ export const useApi = () => {
 
   useEffect(() => {
     const getData = async () => {
-      setIsQuerying(true);
-      const { lat, lon } = await getCoordinates();
-      const res = await axios.get(
-        `${BASE_URL}?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
-      );
-      const { data } = res;
-      console.log(data);
-      setWeatherData(data);
-      setIsQuerying(false);
+      try {
+        setIsQuerying(true);
+        const { lat, lon } = await getCoordinates();
+        const res = await axios.get(
+          `${BASE_URL}?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
+        );
+        const { data } = res;
+        console.log(data);
+        setWeatherData(data);
+        setIsQuerying(false);
+      } catch (e) {
+        console.error("Weather data is currently not available.", e);
+      }
     };
     getData();
   }, []);
