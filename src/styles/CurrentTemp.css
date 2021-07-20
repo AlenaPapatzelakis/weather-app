@@ -1,3 +1,6 @@
 .CurrentTemp {
-  font-size: 5em;
+  font-family: "Open Sans", sans-serif;
+  font-size: clamp(4rem, 10vw, 15rem);
+  color: white;
+  margin: auto;
 }

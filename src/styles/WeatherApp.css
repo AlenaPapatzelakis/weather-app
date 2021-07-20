@@ -1,6 +1,11 @@
 .WeatherApp {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  color: white;
+}
+
+.WeatherApp-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10%;
 }

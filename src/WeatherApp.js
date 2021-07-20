@@ -21,15 +21,14 @@ const WeatherApp = () => {
       ) : !weatherData ? (
         <span>Weather data currently not available.</span>
       ) : (
-        <>
-          <City cityName={weatherData.name} />
+        <div className="WeatherApp-container">
           <CurrentTemp temp={weatherData.main.temp} />
-          <br />
+          <City cityName={weatherData.name} />
           <WeatherIcon
             weatherIcon={weatherData.weather[0].icon}
             desc={weatherData.weather[0].description}
           />
-        </>
+        </div>
       )}
     </div>
   );
