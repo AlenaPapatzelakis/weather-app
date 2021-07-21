@@ -1,6 +1,6 @@
 .City {
   font-family: "Montserrat", sans-serif;
-  font-size: clamp(0.5rem, 1.5vw, 2rem);
+  font-size: clamp(1rem, 3vw, 3rem);
   color: white;
   margin: auto;
 }

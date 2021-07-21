@@ -1,11 +1,21 @@
 .WeatherApp {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   color: white;
+  flex: 1;
 }
 
 .WeatherApp-container {
   display: flex;
   flex-direction: column;
   margin-top: 10%;
+}
+
+.WeatherApp-container > .CurrentTemp {
+  font-size: clamp(4rem, 10vw, 15rem);
+}
+
+.WeatherApp-container > .WeatherIcon {
+  width: clamp(7rem, 20vw, 15rem);
 }

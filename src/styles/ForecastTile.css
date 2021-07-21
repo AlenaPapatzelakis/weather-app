@@ -1,0 +1,12 @@
+.ForecastTile {
+  display: flex;
+  flex-direction: column;
+}
+
+.ForecastTile > .CurrentTemp {
+  font-size: clamp(1.2rem, 3.5vw, 4rem);
+}
+
+.ForecastTile > .WeatherIcon {
+  width: clamp(5rem, 15vw, 15rem);
+}

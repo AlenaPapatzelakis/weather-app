@@ -1,11 +1,7 @@
 import "../styles/City.css";
 
 const City = (props) => {
-  return (
-    <div className="City">
-      <h1>{props.cityName}</h1>
-    </div>
-  );
+  return <h2 className="City">{props.cityName}</h2>;
 };
 
 export default City;

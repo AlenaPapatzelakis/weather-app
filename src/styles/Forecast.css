@@ -1,0 +1,11 @@
+.Forecast {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+@media only screen and (min-width: 24em) {
+  .Forecast {
+    flex-direction: row;
+  }
+}

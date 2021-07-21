@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const BASE_URL = "http://api.openweathermap.org/data/2.5/weather";
+const BASE_URL = "http://api.openweathermap.org/data/2.5";
 const API_KEY = "YOUR_API_KEY_HERE";
 
 export const useApi = () => {
   const [isQuerying, setIsQuerying] = useState(false);
   const [weatherData, setWeatherData] = useState(null);
+  const [forecastData, setForecastData] = useState(null);
 
   const getCoordinates = async () => {
     try {
@@ -24,23 +25,42 @@ export const useApi = () => {
   };
 
   useEffect(() => {
-    const getData = async () => {
+    const getCurrentWeatherData = async () => {
       try {
         setIsQuerying(true);
         const { lat, lon } = await getCoordinates();
         const res = await axios.get(
-          `${BASE_URL}?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
+          `${BASE_URL}/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
         );
         const { data } = res;
-        console.log(data);
+        console.log("Current: ", data);
         setWeatherData(data);
         setIsQuerying(false);
       } catch (e) {
         console.error("Weather data is currently not available.", e);
       }
     };
-    getData();
+    getCurrentWeatherData();
   }, []);
 
-  return [isQuerying, weatherData];
+  useEffect(() => {
+    const getForecastWeatherData = async () => {
+      try {
+        setIsQuerying(true);
+        const { lat, lon } = await getCoordinates();
+        const res = await axios.get(
+          `${BASE_URL}/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
+        );
+        const { data } = res;
+        console.log("Forecast: ", data);
+        setForecastData(data);
+        setIsQuerying(false);
+      } catch (e) {
+        console.error("Forecast data is currently not available.", e);
+      }
+    };
+    getForecastWeatherData();
+  }, []);
+
+  return [isQuerying, weatherData, forecastData];
 };

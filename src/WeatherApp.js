@@ -2,11 +2,12 @@ import { useApi } from "./hooks/useApi";
 import CurrentTemp from "./components/CurrentTemp";
 import City from "./components/City";
 import WeatherIcon from "./components/WeatherIcon";
+import Forecast from "./components/Forecast";
 import "./styles/WeatherApp.css";
 import { useEffect } from "react";
 
 const WeatherApp = () => {
-  const [isQuerying, weatherData] = useApi();
+  const [isQuerying, weatherData, forecastData] = useApi();
 
   useEffect(() => {
     document.title = `${weatherData?.name} - ${Math.floor(
@@ -18,17 +19,20 @@ const WeatherApp = () => {
     <div className="WeatherApp">
       {isQuerying ? (
         <span>Loading...</span>
-      ) : !weatherData ? (
+      ) : !weatherData || !forecastData ? (
         <span>Weather data currently not available.</span>
       ) : (
-        <div className="WeatherApp-container">
-          <CurrentTemp temp={weatherData.main.temp} />
-          <City cityName={weatherData.name} />
-          <WeatherIcon
-            weatherIcon={weatherData.weather[0].icon}
-            desc={weatherData.weather[0].description}
-          />
-        </div>
+        <>
+          <div className="WeatherApp-container">
+            <CurrentTemp temp={weatherData.main.temp} />
+            <City cityName={weatherData.name} />
+            <WeatherIcon
+              weatherIcon={weatherData.weather[0].icon}
+              desc={weatherData.weather[0].description}
+            />
+          </div>
+          <Forecast dailyForecast={forecastData.daily} />
+        </>
       )}
     </div>
   );
