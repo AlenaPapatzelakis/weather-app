@@ -16,6 +16,10 @@
   font-size: clamp(4rem, 10vw, 15rem);
 }
 
+.WeatherApp-container > .Weekday {
+  font-size: clamp(1rem, 3vw, 3rem);
+}
+
 .WeatherApp-container > .WeatherIcon {
   width: clamp(7rem, 20vw, 15rem);
 }

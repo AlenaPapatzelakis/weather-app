@@ -5,6 +5,7 @@ import WeatherIcon from "./components/WeatherIcon";
 import Forecast from "./components/Forecast";
 import "./styles/WeatherApp.css";
 import { useEffect } from "react";
+import Weekday from "./components/Weekday";
 
 const WeatherApp = () => {
   const [isQuerying, weatherData, forecastData] = useApi();
@@ -25,6 +26,7 @@ const WeatherApp = () => {
         <>
           <div className="WeatherApp-container">
             <CurrentTemp temp={weatherData.main.temp} />
+            <Weekday weekdayNum={weatherData.dt} />
             <City cityName={weatherData.name} />
             <WeatherIcon
               weatherIcon={weatherData.weather[0].icon}
