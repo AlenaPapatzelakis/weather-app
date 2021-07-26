@@ -1,0 +1,33 @@
+.CurrentWeather {
+  display: flex;
+  flex-direction: column;
+}
+
+.CurrentWeather > .CurrentTemp {
+  margin: auto;
+  padding: 1rem;
+  font-size: clamp(2rem, 7vw, 5rem);
+}
+
+.CurrentWeather > .WeatherInfo-container > .WeatherInfo-icon {
+  width: clamp(7rem, 20vw, 32rem);
+}
+
+.CurrentWeather > .WeatherInfo-container > .WeatherInfo-description {
+  font-size: clamp(1rem, 4vw, 4rem);
+}
+
+@media only screen and (min-width: 39.8em) {
+  .CurrentWeather {
+    align-items: flex-start;
+    padding: 0 0 0 1rem;
+  }
+
+  .CurrentWeather > .CurrentTemp {
+    margin: 0;
+  }
+
+  .CurrentWeather > .Location-container {
+    margin: 0;
+  }
+}

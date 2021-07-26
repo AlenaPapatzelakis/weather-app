@@ -1,11 +1,8 @@
 import { useApi } from "./hooks/useApi";
-import CurrentTemp from "./components/CurrentTemp";
-import City from "./components/City";
-import WeatherIcon from "./components/WeatherIcon";
+import CurrentWeather from "./components/CurrentWeather";
 import Forecast from "./components/Forecast";
 import "./styles/WeatherApp.css";
 import { useEffect } from "react";
-import Weekday from "./components/Weekday";
 
 const WeatherApp = () => {
   const [isQuerying, weatherData, forecastData] = useApi();
@@ -24,16 +21,17 @@ const WeatherApp = () => {
         <span>Weather data currently not available.</span>
       ) : (
         <>
-          <div className="WeatherApp-container">
-            <CurrentTemp temp={weatherData.main.temp} />
-            <Weekday weekdayNum={weatherData.dt} />
-            <City cityName={weatherData.name} />
-            <WeatherIcon
-              weatherIcon={weatherData.weather[0].icon}
-              desc={weatherData.weather[0].description}
-            />
-          </div>
-          <Forecast dailyForecast={forecastData.daily} />
+          <CurrentWeather
+            temp={weatherData.main.temp}
+            locationName={weatherData.name}
+            weatherIcon={weatherData.weather[0].icon}
+            weatherDesc={weatherData.weather[0].description}
+            humidity={weatherData.main.humidity}
+            pressure={weatherData.main.pressure}
+            chanceOfRain={forecastData.hourly[0].pop}
+            windSpeed={weatherData.wind.speed}
+          />
+          <Forecast hourlyForecast={forecastData.hourly} />
         </>
       )}
     </div>

@@ -1,0 +1,18 @@
+.WeatherInfo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.WeatherInfo-icon {
+  margin: auto;
+  width: auto;
+}
+
+.WeatherInfo-description {
+  margin: auto;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+  color: #fff;
+}

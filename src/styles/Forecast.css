@@ -1,11 +1,23 @@
 .Forecast {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  padding: 0rem 0.5rem 0rem 0.5rem;
 }
 
-@media only screen and (min-width: 24em) {
-  .Forecast {
+.Forecast > .Weekday {
+  display: flex;
+  font-size: clamp(1rem, 5vw, 3rem);
+  margin-bottom: auto;
+}
+
+.Forecast-tileContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 39.8em) {
+  .Forecast-tileContainer {
     flex-direction: row;
   }
 }

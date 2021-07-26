@@ -1,6 +1,8 @@
 .Weekday {
+  font-weight: bold;
   font-family: "Montserrat", sans-serif;
-  font-size: clamp(1rem, 3vw, 3rem);
-  color: white;
-  margin: auto;
+}
+
+.Hour {
+  font-family: "Montserrat", sans-serif;
 }

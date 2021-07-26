@@ -2,7 +2,8 @@ import "../styles/Weekday.css";
 import { useState, useEffect } from "react";
 
 const Weekday = (props) => {
-  const [weekday, setWeekday] = useState();
+  const [weekday, setWeekday] = useState("");
+  const [hour, setHour] = useState("");
 
   useEffect(() => {
     const getWeekday = () => {
@@ -15,13 +16,28 @@ const Weekday = (props) => {
         "Friday",
         "Saturday",
       ];
-      const dayOfTheWeek = weekdays[new Date(props.weekdayNum * 1000).getDay()];
+      const dayOfTheWeek = weekdays[new Date(props.timestamp * 1000).getDay()];
       setWeekday(dayOfTheWeek);
     };
+    console.log(weekday);
     getWeekday();
-  }, [weekday, props.weekdayNum]);
+  }, [weekday, props.timestamp]);
 
-  return <h2 className="Weekday">{weekday}</h2>;
+  useEffect(() => {
+    const getHour = () => {
+      const date = new Date(props.timestamp * 1000);
+      const h = date.getHours();
+      setHour(h);
+    };
+    console.log(hour);
+    getHour();
+  }, [hour, props.timestamp]);
+
+  if (props.hour) {
+    return <p className="Hour">{`${hour}:00`}</p>;
+  }
+
+  return <p className="Weekday">{weekday}</p>;
 };
 
 export default Weekday;
