@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 const BASE_URL = "http://api.openweathermap.org/data/2.5";
 const API_KEY = "YOUR_API_KEY_HERE";
 
+//TODO add opportunity to change to Fahrenheit
+
 export const useApi = () => {
   const [isQuerying, setIsQuerying] = useState(false);
   const [weatherData, setWeatherData] = useState(null);
