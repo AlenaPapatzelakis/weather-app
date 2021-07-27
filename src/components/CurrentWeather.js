@@ -1,5 +1,5 @@
 import "../styles/CurrentWeather.css";
-import AdditionalWeatherInfo from "./AdditionalWeatherInfo";
+import AdvancedWeatherInfo from "./AdvancedWeatherInfo";
 import BasicWeatherInfo from "./BasicWeatherInfo";
 
 //TODO change general props to specific {...} props
@@ -12,7 +12,7 @@ const CurrentWeather = (props) => {
         weatherDesc={props.weatherDesc}
         locationName={props.locationName}
       />
-      <AdditionalWeatherInfo
+      <AdvancedWeatherInfo
         humidity={props.humidity}
         pressure={props.pressure}
         chanceOfRain={props.chanceOfRain}

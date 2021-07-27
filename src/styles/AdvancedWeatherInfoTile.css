@@ -1,0 +1,17 @@
+.AdvancedWeatherInfoTile {
+  display: flex;
+  justify-content: center;
+}
+
+.AdvancedWeatherInfoTile-icon {
+  margin: 0 1rem 0 0;
+}
+
+.AdvancedWeatherInfoTile-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.AdvancedWeatherInfoTile-title {
+  margin: 0;
+}

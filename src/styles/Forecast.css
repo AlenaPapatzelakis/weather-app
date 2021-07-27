@@ -17,6 +17,14 @@
 }
 
 @media only screen and (min-width: 39.8em) {
+  .Forecast {
+    padding: 0;
+  }
+
+  .Forecast > .Weekday {
+    padding-left: 2rem;
+  }
+
   .Forecast-tileContainer {
     flex-direction: row;
   }
