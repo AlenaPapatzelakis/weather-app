@@ -8,7 +8,7 @@ const AdvancedWeatherInfoTile = (props) => {
       </i>
       <div className="AdvancedWeatherInfoTile-container">
         <p className="AdvancedWeatherInfoTile-title">{props.title}</p>
-        <p className="AdvancedWeatherInfoTile-data">{props.data}</p>
+        <p className="AdvancedWeatherInfoTile-data">{`${props.data} ${props.unit}`}</p>
       </div>
     </div>
   );

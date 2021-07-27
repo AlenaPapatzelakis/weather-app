@@ -9,6 +9,7 @@ const AdvancedWeatherInfo = (props) => {
           icon={props[d].icon}
           title={props[d].title}
           data={props[d].data}
+          unit={props[d].unit}
         />
       ))}
     </div>

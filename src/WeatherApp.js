@@ -3,6 +3,11 @@ import CurrentWeather from "./components/CurrentWeather";
 import Forecast from "./components/Forecast";
 import "./styles/WeatherApp.css";
 import { useEffect } from "react";
+import {
+  packData,
+  metersPerSecondToKilometersPerHour,
+  decimalToPercent,
+} from "./utils/WeatherAppUtils";
 
 const WeatherApp = () => {
   const [isQuerying, weatherData, forecastData] = useApi();
@@ -12,10 +17,6 @@ const WeatherApp = () => {
       weatherData?.main.temp
     )}C`;
   });
-
-  const packData = (icon, title, data) => {
-    return { icon: icon, title: title, data: data };
-  };
 
   return (
     <div className="WeatherApp">
@@ -33,19 +34,27 @@ const WeatherApp = () => {
             humidity={packData(
               "water_drop",
               "Humidity",
-              weatherData.main.humidity
+              weatherData.main.humidity,
+              "%"
             )}
             pressure={packData(
               "compress",
               "Air Pressure",
-              weatherData.main.pressure
+              weatherData.main.pressure,
+              "hPa"
             )}
             chanceOfRain={packData(
               "beach_access",
               "Chance of Rain",
-              forecastData.hourly[0].pop
+              decimalToPercent(forecastData.hourly[0].pop),
+              "%"
             )}
-            windSpeed={packData("air", "Wind Speed", weatherData.wind.speed)}
+            windSpeed={packData(
+              "air",
+              "Wind Speed",
+              metersPerSecondToKilometersPerHour(weatherData.wind.speed),
+              "km/h"
+            )}
           />
           <Forecast hourlyForecast={forecastData.hourly} />
         </>
