@@ -1,6 +1,6 @@
 import "../styles/Forecast.css";
 import ForecastTile from "./ForecastTile";
-import Weekday from "./Weekday";
+import DayHour from "./DayHour";
 import { useWindowWidth } from "../hooks/useWindowWidth";
 
 //TODO show more ForecastTiles if there is enough space
@@ -10,7 +10,7 @@ const NUM_OF_HOURS = 5;
 const Forecast = (props) => {
   return (
     <div className="Forecast">
-      <Weekday hour={false} timestamp={props.hourlyForecast[0].dt} />
+      <DayHour hour={false} timestamp={props.hourlyForecast[0].dt} />
       <div className="Forecast-tileContainer">
         {props.hourlyForecast.slice(1, NUM_OF_HOURS).map((data) => (
           <ForecastTile

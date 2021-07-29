@@ -5,6 +5,7 @@
 
 .AdvancedWeatherInfoTile-icon {
   margin: 0 1rem 0 0;
+  font-size: min(5vw, 3rem);
 }
 
 .AdvancedWeatherInfoTile-container {
@@ -14,4 +15,10 @@
 
 .AdvancedWeatherInfoTile-title {
   margin: 0;
+  font-size: min(2.5vw, 1.5rem);
+}
+
+.AdvancedWeatherInfoTile-data {
+  font-size: min(4vw, 2rem);
+  font-weight: 500;
 }

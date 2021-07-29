@@ -1,7 +1,7 @@
 import "../styles/ForecastTile.css";
 import CurrentTemp from "./CurrentTemp";
-import WeatherInfo from "./WeatherInfo";
-import Weekday from "./Weekday";
+import Weather from "./Weather";
+import DayHour from "./DayHour";
 import { useWindowWidth } from "../hooks/useWindowWidth";
 
 const BREAKPOINT = 636;
@@ -11,17 +11,17 @@ const ForecastTile = (props) => {
 
   return width < BREAKPOINT ? (
     <div className="ForecastTile">
-      <Weekday hour={true} timestamp={props.timestamp} />
+      <DayHour hour={true} timestamp={props.timestamp} />
       <div className="ForecastTile-weather">
         <CurrentTemp temp={props.temp} />
-        <WeatherInfo weatherIcon={props.weatherIcon} desc={props.weatherDesc} />
+        <Weather desc={props.weatherDesc} />
       </div>
     </div>
   ) : (
     <div className="ForecastTile">
-      <Weekday hour={true} timestamp={props.timestamp} />
+      <DayHour hour={true} timestamp={props.timestamp} />
       <div className="ForecastTile-weather">
-        <WeatherInfo weatherIcon={props.weatherIcon} desc={props.weatherDesc} />
+        <Weather weatherIcon={props.weatherIcon} />
         <CurrentTemp temp={props.temp} />
       </div>
     </div>

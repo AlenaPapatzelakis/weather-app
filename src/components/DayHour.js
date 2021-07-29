@@ -1,8 +1,8 @@
-import "../styles/Weekday.css";
+import "../styles/DayHour.css";
 import { useWeekday } from "../hooks/useWeekday";
 import { useHour } from "../hooks/useHour";
 
-const Weekday = (props) => {
+const DayHour = (props) => {
   const { weekday } = useWeekday(props.timestamp);
   const { hour } = useHour(props.timestamp);
 
@@ -13,4 +13,4 @@ const Weekday = (props) => {
   );
 };
 
-export default Weekday;
+export default DayHour;

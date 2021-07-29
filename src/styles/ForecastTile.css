@@ -1,7 +1,7 @@
 .ForecastTile {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 }
 
 .ForecastTile:not(:last-child) {
@@ -11,29 +11,7 @@
 .ForecastTile-weather {
   display: flex;
   flex-direction: column;
-}
-
-.ForecastTile > .Hour {
-  font-size: clamp(1rem, 5.5vw, 4rem);
-}
-
-.ForecastTile > .ForecastTile-weather > .CurrentTemp {
-  font-size: clamp(1rem, 5vw, 4rem);
-  margin: 0 0 0 auto;
-}
-
-.ForecastTile
-  > .ForecastTile-weather
-  > .WeatherInfo-container
-  > .WeatherInfo-icon {
-  display: none;
-}
-
-.ForecastTile
-  > .ForecastTile-weather
-  > .WeatherInfo-container
-  > .WeatherInfo-description {
-  font-size: clamp(0.8rem, 3vw, 3rem);
+  align-items: flex-end;
 }
 
 @media only screen and (min-width: 39.8em) {
@@ -41,27 +19,19 @@
     flex-direction: column;
   }
 
+  .ForecastTile:not(:last-child) {
+    border-bottom: none;
+  }
+
   .ForecastTile > .Hour {
-    font-size: clamp(1rem, 3vw, 3rem);
+    margin: 0;
   }
 
-  .ForecastTile
-    > .ForecastTile-weather
-    > .WeatherInfo-container
-    > .WeatherInfo-icon {
-    display: flex;
-    width: clamp(7rem, 14vw, 10rem);
+  .ForecastTile-weather {
+    align-items: center;
   }
 
-  .ForecastTile > .ForecastTile-weather > .CurrentTemp {
-    margin: auto;
-    font-size: clamp(1rem, 3vw, 3rem);
-  }
-
-  .ForecastTile
-    > .ForecastTile-weather
-    > .WeatherInfo-container
-    > .WeatherInfo-description {
-    display: none;
+  .ForecastTile-weather > .Weather > .Weather-icon {
+    width: min(25vw, 13rem);
   }
 }

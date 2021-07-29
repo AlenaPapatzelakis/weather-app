@@ -3,6 +3,7 @@ import AdvancedWeatherInfo from "./AdvancedWeatherInfo";
 import BasicWeatherInfo from "./BasicWeatherInfo";
 
 //TODO change general props to specific {...} props
+//TODO pass width state from app to children to conditionally render AdvancedWeatherInfo
 const CurrentWeather = (props) => {
   return (
     <div className="CurrentWeather">
