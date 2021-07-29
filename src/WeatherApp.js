@@ -1,4 +1,5 @@
 import { useApi } from "./hooks/useApi";
+import { useWindowWidth } from "./hooks/useWindowWidth";
 import CurrentWeather from "./components/CurrentWeather";
 import Forecast from "./components/Forecast";
 import "./styles/WeatherApp.css";
@@ -9,8 +10,12 @@ import {
   decimalToPercent,
 } from "./utils/WeatherAppUtils";
 
+// 636(px) equals 39.8em
+const BREAKPOINT = 636;
+
 const WeatherApp = () => {
   const [isQuerying, weatherData, forecastData] = useApi();
+  const [width] = useWindowWidth();
 
   useEffect(() => {
     document.title = `${weatherData?.name} - ${Math.floor(
@@ -27,6 +32,8 @@ const WeatherApp = () => {
       ) : (
         <>
           <CurrentWeather
+            windowWidth={width}
+            breakpoint={BREAKPOINT}
             temp={weatherData.main.temp}
             locationName={weatherData.name}
             weatherIcon={weatherData.weather[0].icon}
@@ -56,7 +63,11 @@ const WeatherApp = () => {
               "km/h"
             )}
           />
-          <Forecast hourlyForecast={forecastData.hourly} />
+          <Forecast
+            windowWidth={width}
+            breakpoint={BREAKPOINT}
+            hourlyForecast={forecastData.hourly}
+          />
         </>
       )}
     </div>

@@ -12,5 +12,5 @@ export const useHour = (timestamp) => {
     getHour();
   }, [timestamp, hour]);
 
-  return { hour };
+  return [hour];
 };

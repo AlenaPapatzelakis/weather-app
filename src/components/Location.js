@@ -1,9 +1,9 @@
 import "../styles/Location.css";
 
-const Location = (props) => {
+const Location = ({ locationName }) => {
   return (
     <div className="Location">
-      <p className="Location-title">{props.locationName}</p>
+      <p className="Location-title">{locationName}</p>
       <p className="Location-change">
         <i className="Location-icon material-icons">place</i> Change Location
       </p>

@@ -21,5 +21,5 @@ export const useWeekday = (timestamp) => {
     getWeekday();
   }, [timestamp, weekday]);
 
-  return { weekday };
+  return [weekday];
 };

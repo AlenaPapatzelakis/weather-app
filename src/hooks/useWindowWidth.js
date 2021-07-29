@@ -13,5 +13,5 @@ export const useWindowWidth = () => {
     };
   }, [width]);
 
-  return { width };
+  return [width];
 };

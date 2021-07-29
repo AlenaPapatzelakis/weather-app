@@ -2,11 +2,11 @@ import "../styles/DayHour.css";
 import { useWeekday } from "../hooks/useWeekday";
 import { useHour } from "../hooks/useHour";
 
-const DayHour = (props) => {
-  const { weekday } = useWeekday(props.timestamp);
-  const { hour } = useHour(props.timestamp);
+const DayHour = ({ timestamp, isHour }) => {
+  const [weekday] = useWeekday(timestamp);
+  const [hour] = useHour(timestamp);
 
-  return props.hour ? (
+  return isHour ? (
     <p className="Hour">{`${hour}:00`}</p>
   ) : (
     <p className="Weekday">{weekday}</p>

@@ -1,22 +1,18 @@
 import "../styles/Weather.css";
+import { capitalizeFirstLetter } from "../utils/WeatherAppUtils";
 
-const Weather = (props) => {
-  const capitalizeFirstLetter = (str) =>
-    str.replace(/(^\w|\s\w)/g, (m) => m.toUpperCase());
-
+const Weather = ({ weatherIcon, desc }) => {
   return (
     <div className="Weather">
-      {props.weatherIcon && (
+      {weatherIcon && (
         <img
           className="Weather-icon"
-          src={`http://openweathermap.org/img/wn/${props.weatherIcon}@4x.png`}
-          alt={props.desc}
+          src={`http://openweathermap.org/img/wn/${weatherIcon}@4x.png`}
+          alt={desc}
         />
       )}
-      {props.desc && (
-        <p className="Weather-description">
-          {capitalizeFirstLetter(props.desc)}
-        </p>
+      {desc && (
+        <p className="Weather-description">{capitalizeFirstLetter(desc)}</p>
       )}
     </div>
   );

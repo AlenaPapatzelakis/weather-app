@@ -5,6 +5,7 @@ const BASE_URL = "http://api.openweathermap.org/data/2.5";
 const API_KEY = "YOUR_API_KEY_HERE";
 
 //TODO add opportunity to change to Fahrenheit
+//TODO separate current and forecast weather data into their own hooks
 
 export const useApi = () => {
   const [isQuerying, setIsQuerying] = useState(false);

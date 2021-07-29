@@ -2,22 +2,40 @@ import "../styles/CurrentWeather.css";
 import AdvancedWeatherInfo from "./AdvancedWeatherInfo";
 import BasicWeatherInfo from "./BasicWeatherInfo";
 
-//TODO change general props to specific {...} props
-//TODO pass width state from app to children to conditionally render AdvancedWeatherInfo
-const CurrentWeather = (props) => {
-  return (
+const CurrentWeather = ({
+  windowWidth,
+  breakpoint,
+  temp,
+  weatherIcon,
+  weatherDesc,
+  locationName,
+  humidity,
+  pressure,
+  chanceOfRain,
+  windSpeed,
+}) => {
+  return windowWidth < breakpoint ? (
     <div className="CurrentWeather">
       <BasicWeatherInfo
-        temp={props.temp}
-        weatherIcon={props.weatherIcon}
-        weatherDesc={props.weatherDesc}
-        locationName={props.locationName}
+        temp={temp}
+        weatherIcon={weatherIcon}
+        weatherDesc={weatherDesc}
+        locationName={locationName}
+      />
+    </div>
+  ) : (
+    <div className="CurrentWeather">
+      <BasicWeatherInfo
+        temp={temp}
+        weatherIcon={weatherIcon}
+        weatherDesc={weatherDesc}
+        locationName={locationName}
       />
       <AdvancedWeatherInfo
-        humidity={props.humidity}
-        pressure={props.pressure}
-        chanceOfRain={props.chanceOfRain}
-        windSpeed={props.windSpeed}
+        humidity={humidity}
+        pressure={pressure}
+        chanceOfRain={chanceOfRain}
+        windSpeed={windSpeed}
       />
     </div>
   );

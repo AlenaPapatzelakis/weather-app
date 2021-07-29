@@ -2,27 +2,29 @@ import "../styles/ForecastTile.css";
 import CurrentTemp from "./CurrentTemp";
 import Weather from "./Weather";
 import DayHour from "./DayHour";
-import { useWindowWidth } from "../hooks/useWindowWidth";
 
-const BREAKPOINT = 636;
-
-const ForecastTile = (props) => {
-  const { width } = useWindowWidth();
-
-  return width < BREAKPOINT ? (
+const ForecastTile = ({
+  timestamp,
+  temp,
+  weatherIcon,
+  weatherDesc,
+  windowWidth,
+  breakpoint,
+}) => {
+  return windowWidth < breakpoint ? (
     <div className="ForecastTile">
-      <DayHour hour={true} timestamp={props.timestamp} />
+      <DayHour isHour={true} timestamp={timestamp} />
       <div className="ForecastTile-weather">
-        <CurrentTemp temp={props.temp} />
-        <Weather desc={props.weatherDesc} />
+        <CurrentTemp temp={temp} />
+        <Weather desc={weatherDesc} />
       </div>
     </div>
   ) : (
     <div className="ForecastTile">
-      <DayHour hour={true} timestamp={props.timestamp} />
+      <DayHour isHour={true} timestamp={timestamp} />
       <div className="ForecastTile-weather">
-        <Weather weatherIcon={props.weatherIcon} />
-        <CurrentTemp temp={props.temp} />
+        <Weather weatherIcon={weatherIcon} />
+        <CurrentTemp temp={temp} />
       </div>
     </div>
   );

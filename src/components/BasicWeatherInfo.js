@@ -3,12 +3,12 @@ import CurrentTemp from "./CurrentTemp";
 import Location from "./Location";
 import Weather from "./Weather";
 
-const BasicWeatherInfo = (props) => {
+const BasicWeatherInfo = ({ weatherIcon, weatherDesc, temp, locationName }) => {
   return (
     <div className="BasicWeatherInfo">
-      <Weather weatherIcon={props.weatherIcon} desc={props.weatherDesc} />
-      <CurrentTemp temp={props.temp} />
-      <Location locationName={props.locationName} />
+      <Weather weatherIcon={weatherIcon} desc={weatherDesc} />
+      <CurrentTemp temp={temp} />
+      <Location locationName={locationName} />
     </div>
   );
 };
