@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+/*** Get the browser's window width dynamically */
+
 export const useWindowWidth = () => {
   const [width, setWidth] = useState(window.innerWidth);
 

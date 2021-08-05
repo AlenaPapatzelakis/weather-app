@@ -1,5 +1,7 @@
 import "../styles/AdvancedWeatherInfo.css";
+
 import AdvancedWeatherInfoTile from "./AdvancedWeatherInfoTile";
+
 import { v4 as uuidv4 } from "uuid";
 
 const AdvancedWeatherInfo = (props) => {

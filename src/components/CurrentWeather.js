@@ -1,4 +1,5 @@
 import "../styles/CurrentWeather.css";
+
 import AdvancedWeatherInfo from "./AdvancedWeatherInfo";
 import BasicWeatherInfo from "./BasicWeatherInfo";
 
@@ -9,6 +10,7 @@ const CurrentWeather = ({
   weatherIcon,
   weatherDesc,
   locationName,
+  showSearch,
   humidity,
   pressure,
   chanceOfRain,
@@ -21,6 +23,7 @@ const CurrentWeather = ({
         weatherIcon={weatherIcon}
         weatherDesc={weatherDesc}
         locationName={locationName}
+        showSearch={showSearch}
       />
     </div>
   ) : (
@@ -30,6 +33,7 @@ const CurrentWeather = ({
         weatherIcon={weatherIcon}
         weatherDesc={weatherDesc}
         locationName={locationName}
+        showSearch={showSearch}
       />
       <AdvancedWeatherInfo
         humidity={humidity}

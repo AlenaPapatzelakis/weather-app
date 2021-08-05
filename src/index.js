@@ -1,8 +1,10 @@
+import "./styles/index.css";
+
 import React from "react";
 import ReactDOM from "react-dom";
-import "./styles/index.css";
-import WeatherApp from "./WeatherApp";
 import reportWebVitals from "./reportWebVitals";
+
+import WeatherApp from "./WeatherApp";
 
 ReactDOM.render(
   <React.StrictMode>

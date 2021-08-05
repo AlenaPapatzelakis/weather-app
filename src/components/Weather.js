@@ -1,4 +1,5 @@
 import "../styles/Weather.css";
+
 import { capitalizeFirstLetter } from "../utils/WeatherAppUtils";
 
 const Weather = ({ weatherIcon, desc }) => {

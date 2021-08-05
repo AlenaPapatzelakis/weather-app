@@ -1,71 +1,107 @@
-import { useCurrentWeatherData } from "./hooks/useCurrentWeatherData";
-import { useForecastWeatherData } from "./hooks/useForecastWeatherData";
+import "./styles/WeatherApp.css";
+
+import { useEffect, useState } from "react";
 import { useWindowWidth } from "./hooks/useWindowWidth";
+import { useCurrentLocation } from "./hooks/useCurrentLocation";
+import { useCoordsToLocation } from "./hooks/useCoordsToLocation";
+import { useLocationToCoords } from "./hooks/useLocationToCoords";
+import { useOneCall } from "./hooks/useOneCall";
+
+import LocationInput from "./components/LocationInput";
 import CurrentWeather from "./components/CurrentWeather";
 import Forecast from "./components/Forecast";
-import "./styles/WeatherApp.css";
+import LoadingIndicator from "./components/LoadingIndicator";
+
 import {
-  packData,
-  metersPerSecondToKilometersPerHour,
-  decimalToPercent,
   BREAKPOINT,
+  packData,
+  decimalToPercent,
+  metersPerSecondToKilometersPerHour,
 } from "./utils/WeatherAppUtils";
 
 //TODO add opportunity to change to Fahrenheit
+//TODO add (better) error handling
 
 const WeatherApp = () => {
-  const [currentWeatherData, isQueryingCurrentWeatherData] =
-    useCurrentWeatherData();
-  const [forecastWeatherData, isQueryingForecastWeatherData] =
-    useForecastWeatherData();
+  const [locationName, setLocationName] = useState("");
+  const [showSearch, setShowSearch] = useState(false);
+
   const [width] = useWindowWidth();
+
+  const [browserCoordinates] = useCurrentLocation();
+  const [locationFromCoordinates] = useCoordsToLocation(browserCoordinates);
+  const [coordinatesFromLocation] = useLocationToCoords(locationName);
+  const [isLoading, weatherData, error, setCoordinates] = useOneCall();
+
+  useEffect(() => {
+    setCoordinates(coordinatesFromLocation);
+  }, [setCoordinates, coordinatesFromLocation]);
+
+  useEffect(() => {
+    setCoordinates(browserCoordinates);
+  }, [setCoordinates]);
+
+  useEffect(() => {
+    setLocationName(locationFromCoordinates);
+  }, [locationFromCoordinates]);
 
   return (
     <div className="WeatherApp">
-      {isQueryingCurrentWeatherData || isQueryingForecastWeatherData ? (
-        <p>Loading...</p>
-      ) : !currentWeatherData || !forecastWeatherData ? (
-        <p>Weather data currently not available.</p>
-      ) : (
+      {error && <h1>Error when fetching data</h1>}
+
+      {isLoading ? (
+        <LoadingIndicator />
+      ) : weatherData && !showSearch ? (
         <>
           <CurrentWeather
             windowWidth={width}
             breakpoint={BREAKPOINT}
-            temp={currentWeatherData.main.temp}
-            locationName={currentWeatherData.name}
-            weatherIcon={currentWeatherData.weather[0].icon}
-            weatherDesc={currentWeatherData.weather[0].description}
+            temp={weatherData.hourly[0].temp}
+            locationName={locationName}
+            showSearch={(isShowing) => setShowSearch(isShowing)}
+            weatherIcon={weatherData.hourly[0].weather[0].icon}
+            weatherDesc={weatherData.hourly[0].weather[0].description}
             humidity={packData(
               "water_drop",
               "Humidity",
-              currentWeatherData.main.humidity,
+              weatherData.hourly[0].humidity,
               "%"
             )}
             pressure={packData(
               "compress",
               "Air Pressure",
-              currentWeatherData.main.pressure,
+              weatherData.hourly[0].pressure,
               "hPa"
             )}
             chanceOfRain={packData(
               "beach_access",
               "Chance of Rain",
-              decimalToPercent(forecastWeatherData.hourly[0].pop),
+              decimalToPercent(weatherData.hourly[0].pop),
               "%"
             )}
             windSpeed={packData(
               "air",
               "Wind Speed",
-              metersPerSecondToKilometersPerHour(currentWeatherData.wind.speed),
+              metersPerSecondToKilometersPerHour(
+                weatherData.hourly[0].wind_speed
+              ),
               "km/h"
             )}
           />
           <Forecast
             windowWidth={width}
             breakpoint={BREAKPOINT}
-            hourlyForecast={forecastWeatherData.hourly}
+            hourlyForecast={weatherData.hourly}
+            timezone={weatherData.timezone_offset}
           />
         </>
+      ) : (
+        <LocationInput
+          onSearch={(location) => {
+            setLocationName(location);
+            setShowSearch(false);
+          }}
+        />
       )}
     </div>
   );

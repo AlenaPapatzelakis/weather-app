@@ -1,0 +1,38 @@
+.LocationInput {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.LocationInput-inputContainer {
+  display: flex;
+}
+
+.LocationInput-label {
+  font-size: min(8vw, 5rem);
+}
+
+.LocationInput-inputField {
+  flex: 1;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.5em;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: min(5vw, 2rem);
+}
+
+.LocationInput-searchButton {
+  border: none;
+  border-radius: 1rem;
+  background: none;
+}
+
+.LocationInput-searchIcon {
+  color: #fff;
+  font-size: min(8vw, 4rem);
+}
+
+.LocationInput-searchIcon:hover {
+  color: #e7e7e7;
+}

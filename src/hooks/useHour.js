@@ -1,16 +1,21 @@
 import { useState, useEffect } from "react";
 
-export const useHour = (timestamp) => {
-  const [hour, setHour] = useState("");
+/*** Convert a UNIX timestamp and timezone
+ *  into the timezone specific hour */
+
+export const useHour = (timestamp, timezone) => {
+  const [hour, setHour] = useState(0);
 
   useEffect(() => {
     const getHour = () => {
-      const date = new Date(timestamp * 1000);
-      const h = date.getHours();
+      const ts = timestamp * 1000;
+      const offset = timezone * 1000;
+      const date = new Date(ts + offset);
+      const h = date.getUTCHours();
       setHour(h);
     };
     getHour();
-  }, [timestamp, hour]);
+  }, [timestamp, timezone, hour]);
 
   return [hour];
 };
