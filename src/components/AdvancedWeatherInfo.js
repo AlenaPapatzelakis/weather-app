@@ -1,12 +1,21 @@
-import "../styles/AdvancedWeatherInfo.css";
-
 import AdvancedWeatherInfoTile from "./AdvancedWeatherInfoTile";
 
 import { v4 as uuidv4 } from "uuid";
+import styled from "styled-components";
+
+const StyledAdvancedWeatherInfo = styled.div`
+  display: none;
+  @media only screen and (min-width: 39.8em) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 4rem;
+  }
+`;
 
 const AdvancedWeatherInfo = (props) => {
   return (
-    <div className="AdvancedWeatherInfo">
+    <StyledAdvancedWeatherInfo className="AdvancedWeatherInfo">
       {Object.keys(props).map((d) => (
         <AdvancedWeatherInfoTile
           key={uuidv4()}
@@ -16,7 +25,7 @@ const AdvancedWeatherInfo = (props) => {
           unit={props[d].unit}
         />
       ))}
-    </div>
+    </StyledAdvancedWeatherInfo>
   );
 };
 

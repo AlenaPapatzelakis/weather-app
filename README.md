@@ -1,3 +1,33 @@
+# About The Application
+
+This weather application shows current as well as hourly forecasted weather information and displays a fitting background based on the weather.
+
+Being built responsively, the application shows only the most important weather information and a simple hourly forecast on small screens. On larger screens, advanced weather information such as humidity and Probability of Precipitation is added.
+
+The application offers the ability to search for a certain location as well as use the current location by default, if the user allows the browser to provide their location data to the application.
+
+## Technologies Used
+
+- React
+  - Function Components
+  - Hooks API
+  - Conditional Rendering
+  - Styled Components
+- External API (OpenWeatherMap.org)
+- Responsive CSS
+  - Mobile First Approach
+  - Media Queries
+  - Flexbox
+  - Animations
+- HTML5
+- JavaScript
+  - ES6 features (arrow functions, destructuring, let + const, modules)
+  - async/await
+
+## Purpose Of This Project
+
+This project was mainly created to gain a **better understanding of React** and its newer features as well as **consolidate and expand my knowledge of modern JavaScript features and CSS**.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

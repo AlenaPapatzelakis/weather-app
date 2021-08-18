@@ -1,4 +1,4 @@
-import "./styles/WeatherApp.css";
+import styled from "styled-components";
 
 import { useEffect, useState } from "react";
 import { useWindowWidth } from "./hooks/useWindowWidth";
@@ -11,6 +11,7 @@ import LocationInput from "./components/LocationInput";
 import CurrentWeather from "./components/CurrentWeather";
 import Forecast from "./components/Forecast";
 import LoadingIndicator from "./components/LoadingIndicator";
+import Background from "./components/Background";
 
 import {
   BREAKPOINT,
@@ -21,6 +22,35 @@ import {
 
 //TODO add opportunity to change to Fahrenheit
 //TODO add (better) error handling
+
+const StyledWeatherApp = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  position: relative;
+`;
+
+const BackgroundContainer = styled.div`
+  display: flex;
+  position: absolute;
+  z-index: -10;
+`;
+
+const ForegroundContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+  overflow: hidden auto;
+`;
 
 const WeatherApp = () => {
   const [locationName, setLocationName] = useState("");
@@ -46,54 +76,60 @@ const WeatherApp = () => {
   }, [locationFromCoordinates]);
 
   return (
-    <div className="WeatherApp">
+    <StyledWeatherApp className="WeatherApp">
       {error && <h1>Error when fetching data</h1>}
-
       {isLoading ? (
         <LoadingIndicator />
       ) : weatherData && !showSearch ? (
         <>
-          <CurrentWeather
-            windowWidth={width}
-            breakpoint={BREAKPOINT}
-            temp={weatherData.hourly[0].temp}
-            locationName={locationName}
-            showSearch={(isShowing) => setShowSearch(isShowing)}
-            weatherIcon={weatherData.hourly[0].weather[0].icon}
-            weatherDesc={weatherData.hourly[0].weather[0].description}
-            humidity={packData(
-              "water_drop",
-              "Humidity",
-              weatherData.hourly[0].humidity,
-              "%"
-            )}
-            pressure={packData(
-              "compress",
-              "Air Pressure",
-              weatherData.hourly[0].pressure,
-              "hPa"
-            )}
-            chanceOfRain={packData(
-              "beach_access",
-              "Chance of Rain",
-              decimalToPercent(weatherData.hourly[0].pop),
-              "%"
-            )}
-            windSpeed={packData(
-              "air",
-              "Wind Speed",
-              metersPerSecondToKilometersPerHour(
-                weatherData.hourly[0].wind_speed
-              ),
-              "km/h"
-            )}
-          />
-          <Forecast
-            windowWidth={width}
-            breakpoint={BREAKPOINT}
-            hourlyForecast={weatherData.hourly}
-            timezone={weatherData.timezone_offset}
-          />
+          <BackgroundContainer className="WeatherApp-Background">
+            <Background
+              weatherCondition={weatherData.hourly[0].weather[0].main}
+            />
+          </BackgroundContainer>
+          <ForegroundContainer className="WeatherApp-Foreground">
+            <CurrentWeather
+              windowWidth={width}
+              breakpoint={BREAKPOINT}
+              temp={weatherData.hourly[0].temp}
+              locationName={locationName}
+              showSearch={(isShowing) => setShowSearch(isShowing)}
+              weatherIcon={weatherData.hourly[0].weather[0].icon}
+              weatherDesc={weatherData.hourly[0].weather[0].description}
+              humidity={packData(
+                "water_drop",
+                "Humidity",
+                weatherData.hourly[0].humidity,
+                "%"
+              )}
+              pressure={packData(
+                "compress",
+                "Air Pressure",
+                weatherData.hourly[0].pressure,
+                "hPa"
+              )}
+              chanceOfRain={packData(
+                "beach_access",
+                "Chance of Rain",
+                decimalToPercent(weatherData.hourly[0].pop),
+                "%"
+              )}
+              windSpeed={packData(
+                "air",
+                "Wind Speed",
+                metersPerSecondToKilometersPerHour(
+                  weatherData.hourly[0].wind_speed
+                ),
+                "km/h"
+              )}
+            />
+            <Forecast
+              windowWidth={width}
+              breakpoint={BREAKPOINT}
+              hourlyForecast={weatherData.hourly}
+              timezone={weatherData.timezone_offset}
+            />
+          </ForegroundContainer>
         </>
       ) : (
         <LocationInput
@@ -103,7 +139,7 @@ const WeatherApp = () => {
           }}
         />
       )}
-    </div>
+    </StyledWeatherApp>
   );
 };
 

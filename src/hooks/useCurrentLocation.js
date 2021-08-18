@@ -23,7 +23,7 @@ export const useCurrentLocation = () => {
       setGeoError("Geolocation is not supported.");
     }
     navigator.geolocation.getCurrentPosition(handleSuccess, handleError);
-  }, [position]);
+  }, []);
 
   return [position];
 };

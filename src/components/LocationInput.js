@@ -1,8 +1,47 @@
-import "../styles/LocationInput.css";
+import styled from "styled-components";
 
 import { useState } from "react";
 
 import { capitalizeAndTrimInput } from "../utils/WeatherAppUtils";
+
+const StyledLocationInput = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+`;
+
+const Label = styled.label`
+  font-size: min(8vw, 5rem);
+`;
+
+const StyledContainer = styled.div`
+  display: flex;
+`;
+
+const Input = styled.input`
+  flex: 1;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.5em;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: min(5vw, 2rem);
+`;
+
+const Button = styled.button`
+  border: none;
+  border-radius: 1rem;
+  background: none;
+`;
+
+const Icon = styled.i`
+  color: #fff;
+  font-size: min(8vw, 4rem);
+
+  &:hover {
+    color: #e7e7e7;
+  }
+`;
 
 const LocationInput = ({ onSearch }) => {
   const [location, setLocation] = useState("");
@@ -17,13 +56,13 @@ const LocationInput = ({ onSearch }) => {
   };
 
   return (
-    <div className="LocationInput">
+    <StyledLocationInput className="LocationInput">
       <form id="search-form" role="search" onSubmit={handleSubmit}>
-        <label htmlFor="search" className="LocationInput-label">
+        <Label htmlFor="search" className="LocationInput-label">
           Search for City:
-        </label>
-        <div className="LocationInput-inputContainer">
-          <input
+        </Label>
+        <StyledContainer className="LocationInput-inputContainer">
+          <Input
             id="search-input"
             type="search"
             name="search"
@@ -39,14 +78,14 @@ const LocationInput = ({ onSearch }) => {
              * End with at least one letter. */
             pattern="(^[A-Za-z]+)(( |-)?|[A-Za-z]*)([A-Za-z]+$)"
           />
-          <button className="LocationInput-searchButton">
-            <i className="LocationInput-searchIcon material-icons-outlined">
+          <Button className="LocationInput-searchButton">
+            <Icon className="LocationInput-searchIcon material-icons-outlined">
               search
-            </i>
-          </button>
-        </div>
+            </Icon>
+          </Button>
+        </StyledContainer>
       </form>
-    </div>
+    </StyledLocationInput>
   );
 };
 

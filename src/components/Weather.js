@@ -1,21 +1,43 @@
-import "../styles/Weather.css";
+import styled from "styled-components";
 
 import { capitalizeFirstLetter } from "../utils/WeatherAppUtils";
 
+const StyledWeather = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media only screen and (min-width: 39.8em) {
+    align-items: flex-start;
+  }
+`;
+
+const Icon = styled.img`
+  width: min(45vw, 20rem);
+  height: auto;
+`;
+
+const Description = styled.p`
+  margin: 0;
+  font-size: min(5vw, 1.5rem);
+`;
+
 const Weather = ({ weatherIcon, desc }) => {
   return (
-    <div className="Weather">
+    <StyledWeather className="Weather">
       {weatherIcon && (
-        <img
+        <Icon
           className="Weather-icon"
           src={`http://openweathermap.org/img/wn/${weatherIcon}@4x.png`}
           alt={desc}
         />
       )}
       {desc && (
-        <p className="Weather-description">{capitalizeFirstLetter(desc)}</p>
+        <Description className="Weather-description">
+          {capitalizeFirstLetter(desc)}
+        </Description>
       )}
-    </div>
+    </StyledWeather>
   );
 };
 

@@ -1,9 +1,0 @@
-.WeatherApp {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  color: white;
-  flex: 1;
-  height: 100%;
-  width: 100%;
-}
