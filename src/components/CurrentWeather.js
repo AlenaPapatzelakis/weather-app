@@ -23,7 +23,7 @@ const CurrentWeather = ({
   showSearch,
   humidity,
   pressure,
-  chanceOfRain,
+  pop,
   windSpeed,
 }) => {
   return windowWidth < breakpoint ? (
@@ -48,7 +48,7 @@ const CurrentWeather = ({
       <AdvancedWeatherInfo
         humidity={humidity}
         pressure={pressure}
-        chanceOfRain={chanceOfRain}
+        pop={pop}
         windSpeed={windSpeed}
       />
     </StyledCurrentWeather>

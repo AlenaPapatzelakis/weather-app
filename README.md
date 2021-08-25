@@ -1,10 +1,15 @@
 # About The Application
 
+<img src="./images/WeatherApp_clear_mobile.png" height="250" alt="Rainy weather for mobile">
+<img src="./images/WeatherApp_clear.png" width="350" alt="Cloudy weather for desktop">
+
 This weather application shows current as well as hourly forecasted weather information and displays a fitting background based on the weather.
 
-Being built responsively, the application shows only the most important weather information and a simple hourly forecast on small screens. On larger screens, advanced weather information such as humidity and Probability of Precipitation is added.
+Being built responsively, the application shows only the most important weather information and a simple hourly forecast on small screens. On larger screens, advanced weather information such as humidity and probability of precipitation is added.
 
 The application offers the ability to search for a certain location as well as use the current location by default, if the user allows the browser to provide their location data to the application.
+
+Follow instructions below to view the project. An own API key from "Openweathermap.org" is needed to use the application. Insert it into "API_KEY" found in "src/utils/WeatherAppUtils.js".
 
 ## Technologies Used
 
@@ -13,7 +18,7 @@ The application offers the ability to search for a certain location as well as u
   - Hooks API
   - Conditional Rendering
   - Styled Components
-- External API (OpenWeatherMap.org)
+- External API (Openweathermap.org)
 - Responsive CSS
   - Mobile First Approach
   - Media Queries
@@ -23,10 +28,27 @@ The application offers the ability to search for a certain location as well as u
 - JavaScript
   - ES6 features (arrow functions, destructuring, let + const, modules)
   - async/await
+- Figma
+- Inkscape
+
+## Application Design
+
+The application was wireframed and prototyped using Figma. Backgrounds were created using Inkscape. Icons are Material icons.
+
+<img src="./images/Design.png" width="500">
+
+## Preview Of The Application
+
+<img src="./images/WeatherApp_clouds_mobile.png" height="250" alt="Cloudy weather for mobile">
+<img src="./images/WeatherApp_clouds.png" width="350" alt="Cloudy weather for desktop">
+<img src="./images/WeatherApp_clear_mobile.png" height="250" alt="Clear weather for mobile">
+<img src="./images/WeatherApp_clear.png" width="350" alt="Clear weather for desktop">
+<img src="./images/WeatherApp_rain_mobile.png" height="250" alt="Rainy weather for mobile">
+<img src="./images/WeatherApp_rain.png" width="350" alt="Rainy weather for desktop">
 
 ## Purpose Of This Project
 
-This project was mainly created to gain a **better understanding of React** and its newer features as well as **consolidate and expand my knowledge of modern JavaScript features and CSS**.
+This project was mainly created to gain a **better understanding of React** and its newer features as well as **consolidate and expand my knowledge of modern JavaScript features and CSS**. It is still a **work in progress**.
 
 # Getting Started with Create React App
 

@@ -108,9 +108,9 @@ const WeatherApp = () => {
                 weatherData.hourly[0].pressure,
                 "hPa"
               )}
-              chanceOfRain={packData(
+              pop={packData(
                 "beach_access",
-                "Chance of Rain",
+                "Precipitation",
                 decimalToPercent(weatherData.hourly[0].pop),
                 "%"
               )}
