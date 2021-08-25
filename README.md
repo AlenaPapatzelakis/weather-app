@@ -1,7 +1,8 @@
 # About The Application
 
-<img src="./images/WeatherApp_clear_mobile.png" height="250" alt="Rainy weather for mobile">
-<img src="./images/WeatherApp_clear.png" width="350" alt="Cloudy weather for desktop">
+|                                        Mobile Version                                        |                                    Desktop Version                                     |
+| :------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------: |
+| <img src="./images/WeatherApp_clear_mobile.png" height="250" alt="Rainy weather for mobile"> | <img src="./images/WeatherApp_clear.png" width="350" alt="Cloudy weather for desktop"> |
 
 This weather application shows current as well as hourly forecasted weather information and displays a fitting background based on the weather.
 
@@ -39,12 +40,11 @@ The application was wireframed and prototyped using Figma. Backgrounds were crea
 
 ## Preview Of The Application
 
-<img src="./images/WeatherApp_clouds_mobile.png" height="250" alt="Cloudy weather for mobile">
-<img src="./images/WeatherApp_clouds.png" width="350" alt="Cloudy weather for desktop">
-<img src="./images/WeatherApp_clear_mobile.png" height="250" alt="Clear weather for mobile">
-<img src="./images/WeatherApp_clear.png" width="350" alt="Clear weather for desktop">
-<img src="./images/WeatherApp_rain_mobile.png" height="250" alt="Rainy weather for mobile">
-<img src="./images/WeatherApp_rain.png" width="350" alt="Rainy weather for desktop">
+|                                         Mobile Version                                         |                                     Desktop Version                                     |
+| :--------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------: |
+| <img src="./images/WeatherApp_clouds_mobile.png" height="250" alt="Cloudy weather for mobile"> | <img src="./images/WeatherApp_clouds.png" width="350" alt="Cloudy weather for desktop"> |
+|  <img src="./images/WeatherApp_clear_mobile.png" height="250" alt="Clear weather for mobile">  |  <img src="./images/WeatherApp_clear.png" width="350" alt="Clear weather for desktop">  |
+|  <img src="./images/WeatherApp_rain_mobile.png" height="250" alt="Rainy weather for mobile">   |  <img src="./images/WeatherApp_rain.png" width="350" alt="Rainy weather for desktop">   |
 
 ## Purpose Of This Project
 
